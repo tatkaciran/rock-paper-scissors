@@ -23,7 +23,7 @@ The game logic is implemented using JavaScript.
 
 ## How to Play
 
-1. Visit the live demo: [Try the game here](https://tatkaciran.github.io/rock-paper-scissors/-goes-here)
+1. Visit the live demo: [Try the game here](https://tatkaciran.github.io/rock-paper-scissors/)
 2. On the game page, write one of "Rock," "Paper," or "Scissors" to box.
 3. Wait for the computer to make a random choice.
 4. See the result on the screen and keep track of your points.
