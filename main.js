@@ -46,3 +46,22 @@ function playRound() {
     console.log('scores:', scores)
     console.log(' ')
 }
+
+function game(roundNumber = 5) {
+    for (let i = 1; i <= roundNumber; i++) {
+        playRound()
+    }
+
+    const winCount = scores.filter(value => value === 'win').length
+    const drawCount = scores.filter(value => value === 'draw').length
+
+    if (winCount >= Math.round(roundNumber / 2)) {
+        console.log('You Win!')
+    } else if (drawCount === roundNumber) {
+        console.log("It's a tie!")
+    } else {
+        console.log('You Lose!')
+    }
+}
+
+game()
