@@ -19,7 +19,7 @@ Rock Paper Scissors is a simple and fun game played between a user and the compu
 
 ## Project Development
 
-The game logic is implemented using JavaScript.
+The game logic is implemented using JavaScript. The user interface is created with HTML and styled with CSS.
 
 ## How to Play
 
@@ -32,3 +32,5 @@ The game logic is implemented using JavaScript.
 
 - [X] Implementing the game logic with JavaScript
 - [X] Adding the scoring system
+- [] Creating the user interface using HTML
+- [] Styling the user interface with CSS
