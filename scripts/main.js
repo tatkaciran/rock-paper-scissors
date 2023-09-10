@@ -33,12 +33,15 @@ async function playRound() {
 
     if (playerSelection === computerSelection) {
         scoreStatus = "It's a draw! Both of you chose the same sign!"
+        changeChoicesColorAccordingToResult('draw')
         scores.push('draw')
     } else if (playerWins) {
         scoreStatus = `You Win! ${playerSelection} beats ${computerSelection}`
+        changeChoicesColorAccordingToResult('win')
         scores.push('win')
     } else {
         scoreStatus = `You Lose! ${computerSelection} beats ${playerSelection}`
+        changeChoicesColorAccordingToResult('lose')
         scores.push('lose')
     }
 

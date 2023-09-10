@@ -16,3 +16,11 @@ const displayPlayerChoice = choice => displayChoice('.player-choice', choice)
 
 const displayOpponentChoice = choice =>
     displayChoice('.opponent-choice', choice)
+
+function changeChoicesColorAccordingToResult(result) {
+    const choices = document.querySelector('.choices')
+    choices.classList = []
+    choices.classList.add('choices')
+    choices.classList.add('centered')
+    choices.classList.add(`${result}`)
+}
