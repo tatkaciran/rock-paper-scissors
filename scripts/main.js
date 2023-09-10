@@ -1,5 +1,4 @@
 let scores = []
-let scoreStatus = ''
 
 function getComputerChoice() {
     return ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)]
@@ -23,21 +22,20 @@ async function playRound() {
     const playerSelection = await getPlayerChoice()
     const computerSelection = getComputerChoice()
 
-    if (playerSelection === computerSelection) {
-        scoreStatus = "It's a draw! Both of you chose the same sign!"
-        scores.push('draw')
-    } else if (
+    let scoreStatus = ''
+
+    const playerWins =
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
-    ) {
+
+    if (playerSelection === computerSelection) {
+        scoreStatus = "It's a draw! Both of you chose the same sign!"
+        scores.push('draw')
+    } else if (playerWins) {
         scoreStatus = `You Win! ${playerSelection} beats ${computerSelection}`
         scores.push('win')
-    } else if (
-        (playerSelection === 'rock' && computerSelection === 'paper') ||
-        (playerSelection === 'paper' && computerSelection === 'scissors') ||
-        (playerSelection === 'scissors' && computerSelection === 'rock')
-    ) {
+    } else {
         scoreStatus = `You Lose! ${computerSelection} beats ${playerSelection}`
         scores.push('lose')
     }
