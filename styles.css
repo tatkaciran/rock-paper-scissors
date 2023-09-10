@@ -116,3 +116,23 @@ button:hover img {
 .buttons img {
     height: 70px;
 }
+
+.play-again-button {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    align-items: center;
+    color: white;
+}
+
+.play-again-button:hover {
+    display: flex;
+    margin: 10px;
+    gap: 16px;
+    padding: 16px;
+    align-items: center;
+    color: white;
+}
+.play-again-button:hover img {
+    height: 70px;
+}

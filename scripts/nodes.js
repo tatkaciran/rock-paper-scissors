@@ -41,3 +41,35 @@ const addScoreToOpponent = () =>
     opponentScoresNode.appendChild(displayScore('lose'))
 
 const addScoreToPlayer = () => playerScoresNode.appendChild(displayScore('win'))
+
+function displayRockPaperScissorsButtons() {
+    const buttonsNode = document.querySelector('.buttons')
+    buttonsNode.innerHTML = ''
+    const buttons = ['rock', 'paper', 'scissors']
+    buttons.forEach(btn => {
+        const btnNode = document.createElement('button')
+        const img = createImg(`${btn}`)
+        btnNode.appendChild(img)
+        buttonsNode.appendChild(btnNode)
+    })
+}
+
+function displayPlayAgainButton(status, event) {
+    const buttons = document.querySelector('.buttons')
+    const playAgainButton = document.createElement('button')
+    const text = document.createElement('p')
+    playAgainButton.classList.add('play-again-button')
+    const img = createImg('draw')
+    text.innerHTML = status + " Let's play again!"
+    playAgainButton.addEventListener('click', event)
+
+    playAgainButton.appendChild(img)
+    playAgainButton.appendChild(text)
+    buttons.innerHTML = ''
+    buttons.appendChild(playAgainButton)
+}
+
+const cleanDisplayedScores = () => {
+    playerScoresNode.innerHTML = ''
+    opponentScoresNode.innerHTML = ''
+}

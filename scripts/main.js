@@ -53,6 +53,15 @@ async function playRound() {
     console.log(' ')
 }
 
+function resetGame() {
+    scores = []
+    cleanDisplayedScores()
+    changeChoicesColorAccordingToResult('undefined')
+    displayPlayerChoice()
+    displayOpponentChoice()
+    displayRockPaperScissorsButtons()
+}
+
 async function game(roundNumber = 5) {
     const playerWin =
         scores.filter(value => value === 'win').length === roundNumber
@@ -62,7 +71,12 @@ async function game(roundNumber = 5) {
     if (playerWin || playerLose) {
         const result = playerWin ? 'You Win!' : 'You Lose!'
         console.log(result)
+        displayPlayAgainButton(result, () => {
+            resetGame()
+            game()
+        })
     } else {
+        displayRockPaperScissorsButtons()
         await playRound()
         game()
     }
