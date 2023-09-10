@@ -54,19 +54,17 @@ async function playRound() {
 }
 
 async function game(roundNumber = 5) {
-    for (let i = 1; i <= roundNumber; i++) {
-        await playRound()
-    }
+    const playerWin =
+        scores.filter(value => value === 'win').length === roundNumber
+    const playerLose =
+        scores.filter(value => value === 'lose').length === roundNumber
 
-    const winCount = scores.filter(value => value === 'win').length
-    const drawCount = scores.filter(value => value === 'draw').length
-
-    if (winCount >= Math.round(roundNumber / 2)) {
-        console.log('You Win!')
-    } else if (drawCount === roundNumber) {
-        console.log("It's a draw!")
+    if (playerWin || playerLose) {
+        const result = playerWin ? 'You Win!' : 'You Lose!'
+        console.log(result)
     } else {
-        console.log('You Lose!')
+        await playRound()
+        game()
     }
 }
 
