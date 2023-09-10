@@ -3,7 +3,7 @@ let scores = []
 let scoreStatus = ''
 
 function getComputerChoice() {
-    return Math.floor(Math.random() * 3)
+    return ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)]
 }
 
 function getPlayerSelection() {
@@ -19,29 +19,28 @@ function playRound() {
     const computerSelection = getComputerChoice()
 
     const playerChoice = choices[playerSelection]
-    const computerChoice = choices[computerSelection]
 
     if (playerSelection === computerSelection) {
         scoreStatus = "It's a draw! Both of you chose the same sign!"
         scores.push('draw')
     } else if (
-        (playerSelection === 0 && computerSelection === 2) ||
-        (playerSelection === 1 && computerSelection === 0) ||
-        (playerSelection === 2 && computerSelection === 1)
+        (playerSelection === 0 && computerSelection === 'scissors') ||
+        (playerSelection === 1 && computerSelection === 'rock') ||
+        (playerSelection === 2 && computerSelection === 'paper')
     ) {
-        scoreStatus = `You Win! ${playerChoice} beats ${computerChoice}`
+        scoreStatus = `You Win! ${playerChoice} beats ${computerSelection}`
         scores.push('win')
     } else if (
-        (playerSelection === 0 && computerSelection === 1) ||
-        (playerSelection === 1 && computerSelection === 2) ||
-        (playerSelection === 2 && computerSelection === 0)
+        (playerSelection === 0 && computerSelection === 'paper') ||
+        (playerSelection === 1 && computerSelection === 'scissors') ||
+        (playerSelection === 2 && computerSelection === 'rock')
     ) {
-        scoreStatus = `You Lose! ${computerChoice} beats ${playerChoice}`
+        scoreStatus = `You Lose! ${computerSelection} beats ${playerChoice}`
         scores.push('lose')
     }
 
     console.log('player:', playerChoice)
-    console.log('computer:', computerChoice)
+    console.log('computer:', computerSelection)
     console.log('status:', scoreStatus)
     console.log('scores:', scores)
     console.log(' ')
