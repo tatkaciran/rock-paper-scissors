@@ -65,3 +65,5 @@ async function game(roundNumber = 5) {
         console.log('You Lose!')
     }
 }
+
+game()
