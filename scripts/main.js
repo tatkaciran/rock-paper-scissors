@@ -20,7 +20,9 @@ async function getPlayerChoice() {
 
 async function playRound() {
     const playerSelection = await getPlayerChoice()
+    displayPlayerChoice(playerSelection)
     const computerSelection = getComputerChoice()
+    displayOpponentChoice(computerSelection)
 
     let scoreStatus = ''
 
