@@ -58,9 +58,12 @@ function displayPlayAgainButton(status, event) {
     const buttons = document.querySelector('.buttons')
     const playAgainButton = document.createElement('button')
     const text = document.createElement('p')
-    playAgainButton.classList.add('play-again-button')
     const img = createImg('draw')
+
+    playAgainButton.classList.add('play-again-button')
+    
     text.innerHTML = status + " Let's play again!"
+
     playAgainButton.addEventListener('click', event)
 
     playAgainButton.appendChild(img)
@@ -72,4 +75,9 @@ function displayPlayAgainButton(status, event) {
 const cleanDisplayedScores = () => {
     playerScoresNode.innerHTML = ''
     opponentScoresNode.innerHTML = ''
+}
+
+function displayResult(scoreStatus) {
+    const info = document.querySelector('.info')
+    info.textContent = `${scoreStatus}`
 }

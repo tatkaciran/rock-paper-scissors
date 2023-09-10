@@ -46,11 +46,7 @@ async function playRound() {
         scores.push('lose')
     }
 
-    console.log('player:', playerSelection)
-    console.log('computer:', computerSelection)
-    console.log('status:', scoreStatus)
-    console.log('scores:', scores)
-    console.log(' ')
+    displayResult(scoreStatus)
 }
 
 function resetGame() {
@@ -60,6 +56,7 @@ function resetGame() {
     displayPlayerChoice()
     displayOpponentChoice()
     displayRockPaperScissorsButtons()
+    displayResult('Select Rock, Paper or Scissors')
 }
 
 async function game(roundNumber = 5) {
@@ -70,7 +67,6 @@ async function game(roundNumber = 5) {
 
     if (playerWin || playerLose) {
         const result = playerWin ? 'You Win!' : 'You Lose!'
-        console.log(result)
         displayPlayAgainButton(result, () => {
             resetGame()
             game()
