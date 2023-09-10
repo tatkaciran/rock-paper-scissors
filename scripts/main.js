@@ -1,4 +1,3 @@
-const choices = ['rock', 'paper', 'scissors']
 let scores = []
 let scoreStatus = ''
 
@@ -6,49 +5,53 @@ function getComputerChoice() {
     return ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)]
 }
 
-function getPlayerSelection() {
-    const choice = prompt('Select Rock, Paper or Scissors', 'paper')
-    const lowercaseChoice = choice.toLowerCase()
-    return choices.findIndex(value => {
-        return value === lowercaseChoice
+async function getPlayerChoice() {
+    const selectionPromise = new Promise((resolve, reject) => {
+        const buttons = document.querySelectorAll('.buttons > button')
+        buttons.forEach(function (button) {
+            button.addEventListener('click', event => {
+                const selection = event.currentTarget.querySelector('img').alt
+                resolve(selection)
+            })
+        })
     })
+
+    return await selectionPromise
 }
 
-function playRound() {
-    const playerSelection = getPlayerSelection()
+async function playRound() {
+    const playerSelection = await getPlayerChoice()
     const computerSelection = getComputerChoice()
-
-    const playerChoice = choices[playerSelection]
 
     if (playerSelection === computerSelection) {
         scoreStatus = "It's a draw! Both of you chose the same sign!"
         scores.push('draw')
     } else if (
-        (playerSelection === 0 && computerSelection === 'scissors') ||
-        (playerSelection === 1 && computerSelection === 'rock') ||
-        (playerSelection === 2 && computerSelection === 'paper')
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
-        scoreStatus = `You Win! ${playerChoice} beats ${computerSelection}`
+        scoreStatus = `You Win! ${playerSelection} beats ${computerSelection}`
         scores.push('win')
     } else if (
-        (playerSelection === 0 && computerSelection === 'paper') ||
-        (playerSelection === 1 && computerSelection === 'scissors') ||
-        (playerSelection === 2 && computerSelection === 'rock')
+        (playerSelection === 'rock' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'rock')
     ) {
-        scoreStatus = `You Lose! ${computerSelection} beats ${playerChoice}`
+        scoreStatus = `You Lose! ${computerSelection} beats ${playerSelection}`
         scores.push('lose')
     }
 
-    console.log('player:', playerChoice)
+    console.log('player:', playerSelection)
     console.log('computer:', computerSelection)
     console.log('status:', scoreStatus)
     console.log('scores:', scores)
     console.log(' ')
 }
 
-function game(roundNumber = 5) {
+async function game(roundNumber = 5) {
     for (let i = 1; i <= roundNumber; i++) {
-        playRound()
+        await playRound()
     }
 
     const winCount = scores.filter(value => value === 'win').length
