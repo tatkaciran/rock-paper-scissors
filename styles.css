@@ -53,10 +53,24 @@ body {
 }
 .scores {
     max-width: 350px;
+    margin: 0;
+    padding: 0;
 }
+
+.all-scores {
+    max-width: 320px;
+    flex-direction: column;
+}
+
+.opponent-scores,
+.player-scores {
+    height: 60px;
+}
+
 .score {
     border: 3px solid rgba(129, 129, 129, 0.725);
     border-radius: 6px;
+    list-style-type: none;
 }
 
 .score img {

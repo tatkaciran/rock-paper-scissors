@@ -1,3 +1,6 @@
+const playerScoresNode = document.querySelector('.player-scores')
+const opponentScoresNode = document.querySelector('.opponent-scores')
+
 const createImg = (name = 'undefined') => {
     const img = document.createElement('img')
     img.alt = `${name}`
@@ -24,3 +27,17 @@ function changeChoicesColorAccordingToResult(result) {
     choices.classList.add('centered')
     choices.classList.add(`${result}`)
 }
+
+function displayScore(result) {
+    const score = document.createElement('li')
+    const img = createImg(result)
+    score.appendChild(img)
+    score.classList.add('score')
+    score.classList.add(`${result}`)
+    return score
+}
+
+const addScoreToOpponent = () =>
+    opponentScoresNode.appendChild(displayScore('lose'))
+
+const addScoreToPlayer = () => playerScoresNode.appendChild(displayScore('win'))
