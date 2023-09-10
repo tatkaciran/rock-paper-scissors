@@ -32,5 +32,5 @@ The game logic is implemented using JavaScript. The user interface is created wi
 
 - [X] Implementing the game logic with JavaScript
 - [X] Adding the scoring system
-- [] Creating the user interface using HTML
-- [] Styling the user interface with CSS
+- [x] Creating the user interface using HTML
+- [x] Styling the user interface with CSS

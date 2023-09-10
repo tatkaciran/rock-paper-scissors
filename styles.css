@@ -74,7 +74,7 @@ body {
     background-color: rgba(201, 0, 0, 0.668);
 }
 
-.tie {
+.draw {
     border: 3px solid rgba(193, 164, 20, 0.859);
     background-color: rgb(190, 172, 8);
 }

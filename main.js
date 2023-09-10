@@ -22,7 +22,7 @@ function playRound() {
     const computerChoice = choices[computerSelection]
 
     if (playerSelection === computerSelection) {
-        scoreStatus = "It's a tie! Both of you chose the same sign!"
+        scoreStatus = "It's a draw! Both of you chose the same sign!"
         scores.push('draw')
     } else if (
         (playerSelection === 0 && computerSelection === 2) ||
@@ -58,7 +58,7 @@ function game(roundNumber = 5) {
     if (winCount >= Math.round(roundNumber / 2)) {
         console.log('You Win!')
     } else if (drawCount === roundNumber) {
-        console.log("It's a tie!")
+        console.log("It's a draw!")
     } else {
         console.log('You Lose!')
     }
